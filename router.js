@@ -6,6 +6,7 @@ const validator = require('./middleware/validator');
 let router = express.Router();
 let requiredEntities = {};
 
+/* Defines on Express all the routes in the routes.js file */
 for (const route of routes) {
     if (!requiredEntities[route.entity]) {
         requiredEntities[route.entity] = require(`./entity/${route.entity}.js`);

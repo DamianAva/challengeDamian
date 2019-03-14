@@ -43,10 +43,12 @@ exports.all = (req, res, next) => {
 exports.update = (req, res, next) => {
     let userId = req.session.id;
     let notiId = req.body.idDetail; // Esto es una suposicion, no esta clara en la documentacion
+    let type = req.body.type;
 
     let params = [
         { 
-            
+            read: 1,
+            type: type
         },
         userId,
         notiId
@@ -57,6 +59,6 @@ exports.update = (req, res, next) => {
             return res.status(500).send('Database Error.');
         }
 
-
+        return res.status(200).end;
     });
 };
