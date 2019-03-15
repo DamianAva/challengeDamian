@@ -101,39 +101,35 @@ exports.get = (req, res, next) => {
             return res.status(500).send('Can\'t find the theatre.');
         }
 
-        let parsedResults = {};
+        let parsedResults = {
+            id: results[0].id,
+            name: results[0].name,
+            address: results[0].address,
+            phone: results[0].phone,
+            email: results[0].email,
+            site_url: results[0].site_url,
+            history: results[0].history,
+            country: results[0].country,
+            province: results[0].province,
+            profile_image: results[0].profile_image,
+            cover_image: results[0].cover_image,
+            city: results[0].city,
+            circuit_type: results[0].circuit_type,
+            gallery: {},
+            rooms: {}
+        };
 
         for (const result of results) {
-            if (!parsedResults[result.id]) {
-                parsedResults[result.id] = {
-                    id: result.id,
-                    name: result.name,
-                    address: result.address,
-                    phone: result.phone,
-                    email: result.email,
-                    site_url: result.site_url,
-                    history: result.history,
-                    country: result.country,
-                    province: result.province,
-                    profile_image: result.profile_image,
-                    cover_image: result.cover_image,
-                    city: result.city,
-                    circuit_type: result.circuit_type,
-                    gallery: {},
-                    rooms: {}
-                };  
-            }
-
-            if(result.img_id && !parsedResults[result.id].gallery[result.img_id]){
-                parsedResults[result.id].gallery[result.img_id] = {
+            if(result.img_id && !parsedResults.gallery[result.img_id]){
+                parsedResults.gallery[result.img_id] = {
                     id: result.img_id,
                     src: result.src,
                     alt: result.alt
                 };
             }
 
-            if(result.room_id && !parsedResults[result.id].rooms[result.room_id]){
-                parsedResults[result.id].rooms[result.room_id] = {
+            if(result.room_id && !parsedResults.rooms[result.room_id]){
+                parsedResults.rooms[result.room_id] = {
                     id: result.room_id,
                     name: result.room_name,
                     capacity: result.capacity,
@@ -146,12 +142,8 @@ exports.get = (req, res, next) => {
             }
         }
 
-        parsedResults = Object.values(parsedResults);
-
-        for (const result of parsedResults) {
-            result.rooms = Object.values(result.rooms);
-            result.gallery = Object.values(result.gallery);
-        }
+        parsedResults.rooms = Object.values(parsedResults.rooms);
+        parsedResults.gallery = Object.values(parsedResults.gallery);
 
         res.send(parsedResults);
     });

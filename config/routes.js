@@ -31,6 +31,21 @@ module.exports = [
         }
     },
     {
+        path: '/event/:id',
+        entity: 'event',
+        method: 'get',
+        type: 'get',
+        auth: true,
+        input: {
+            params: {
+                id: {
+                    type: 'int',
+                    required: true
+                }
+            }
+        }
+    },
+    {
         path: '/events',
         entity: 'event',
         method: 'all',
