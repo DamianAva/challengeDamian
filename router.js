@@ -1,3 +1,5 @@
+'user strict';
+
 const express = require('express');
 const config = require('./config/config.js');
 const routes = require('./config/routes.js');

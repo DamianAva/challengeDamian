@@ -1,3 +1,5 @@
+'user strict';
+
 const http = require('http');
 const express = require('express');
 const compress = require('compression');
