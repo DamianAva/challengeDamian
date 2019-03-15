@@ -23,8 +23,8 @@ exports.all = (req, res, next) => {
         let parsedResults = {};
 
         for (const result of results) {
-            if (!parsedResults[id]) {
-                parsedResults[id] = {
+            if (!parsedResults[result.id]) {
+                parsedResults[result.id] = {
                     id: result.id,
                     name: result.name,
                     address: result.address,
@@ -38,21 +38,21 @@ exports.all = (req, res, next) => {
                     cover_image: result.cover_image,
                     city: result.city,
                     circuit_type: result.circuit_type,
-                    gallery: [],
-                    rooms: []
+                    gallery: {},
+                    rooms: {}
                 };  
             }
 
-            if (result.img_id) {
-                parsedResults[id].gallery.push({
+            if(result.img_id && !parsedResults[result.id].gallery[result.img_id]){
+                parsedResults[result.id].gallery[result.img_id] = {
                     id: result.img_id,
                     src: result.src,
                     alt: result.alt
-                });
+                };
             }
 
-            if (result.room_id) {
-                parsedResults[id].gallery.push({
+            if(result.room_id && !parsedResults[result.id].rooms[result.room_id]){
+                parsedResults[result.id].rooms[result.room_id] = {
                     id: result.room_id,
                     name: result.room_name,
                     capacity: result.capacity,
@@ -61,11 +61,16 @@ exports.all = (req, res, next) => {
                     profile_image: result.profile_image,
                     scenic_space: result.scenic_space,
                     escenary_type: result.escenary_type
-                });
+                };
             }
         }
 
         parsedResults = Object.values(parsedResults);
+
+        for (const result of parsedResults) {
+            result.rooms = Object.values(result.rooms);
+            result.gallery = Object.values(result.gallery);
+        }
 
         res.send(parsedResults);
     });
@@ -80,7 +85,7 @@ exports.profile = () => {};
  * @function
  * @param {Object} req - The request object of Express.
  * @param {Object} req.params - The params of the request.
- * @param {Object} req.params.id - ID of the theatre.
+ * @param {Integer} req.params.id - ID of the theatre.
  * @param {Object} res - The response object of Express.
  * @param {Function} next - Express callback argument.
  */
@@ -92,11 +97,15 @@ exports.get = (req, res, next) => {
             return res.status(500).send('Database Error.');
         }
 
+        if (!results.length) {
+            return res.status(500).send('Can\'t find the theatre.');
+        }
+
         let parsedResults = {};
 
         for (const result of results) {
-            if (!parsedResults[id]) {
-                parsedResults[id] = {
+            if (!parsedResults[result.id]) {
+                parsedResults[result.id] = {
                     id: result.id,
                     name: result.name,
                     address: result.address,
@@ -110,21 +119,21 @@ exports.get = (req, res, next) => {
                     cover_image: result.cover_image,
                     city: result.city,
                     circuit_type: result.circuit_type,
-                    gallery: [],
-                    rooms: []
+                    gallery: {},
+                    rooms: {}
                 };  
             }
 
-            if (result.img_id) {
-                parsedResults[id].gallery.push({
+            if(result.img_id && !parsedResults[result.id].gallery[result.img_id]){
+                parsedResults[result.id].gallery[result.img_id] = {
                     id: result.img_id,
                     src: result.src,
                     alt: result.alt
-                });
+                };
             }
 
-            if (result.room_id) {
-                parsedResults[id].gallery.push({
+            if(result.room_id && !parsedResults[result.id].rooms[result.room_id]){
+                parsedResults[result.id].rooms[result.room_id] = {
                     id: result.room_id,
                     name: result.room_name,
                     capacity: result.capacity,
@@ -133,11 +142,16 @@ exports.get = (req, res, next) => {
                     profile_image: result.profile_image,
                     scenic_space: result.scenic_space,
                     escenary_type: result.escenary_type
-                });
+                };
             }
         }
 
         parsedResults = Object.values(parsedResults);
+
+        for (const result of parsedResults) {
+            result.rooms = Object.values(result.rooms);
+            result.gallery = Object.values(result.gallery);
+        }
 
         res.send(parsedResults);
     });
@@ -157,7 +171,7 @@ exports.updateRoom = () => {};
  * @function
  * @param {Object} req - The request object of Express.
  * @param {Object} req.params - The params of the request.
- * @param {Object} req.params.id - ID of the theatre room.
+ * @param {Integer} req.params.id - ID of the theatre room.
  * @param {Object} res - The response object of Express.
  * @param {Function} next - Express callback argument.
  */

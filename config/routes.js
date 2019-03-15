@@ -31,8 +31,43 @@ module.exports = [
         }
     },
     {
+        path: '/events',
+        entity: 'event',
+        method: 'all',
+        type: 'get',
+        auth: true,
+        input: {
+            params: {}
+        }
+    },
+    {
         path: '/notifications',
         entity: 'notification',
+        method: 'all',
+        type: 'get',
+        auth: true,
+        input: {
+            params: {}
+        }
+    },
+    {
+        path: '/payment/:id',
+        entity: 'payment',
+        method: 'get',
+        type: 'get',
+        auth: true,
+        input: {
+            params: {
+                id: {
+                    type: 'int',
+                    required: true
+                }
+            }
+        }
+    },
+    {
+        path: '/payments',
+        entity: 'payment',
         method: 'all',
         type: 'get',
         auth: true,
