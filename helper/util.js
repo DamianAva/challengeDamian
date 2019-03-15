@@ -37,10 +37,10 @@ exports.isString = (value) => {
  * @name isNumber
  * @function
  * @param {} value - Value to test.
- * @returns {String} Result of the test.
+ * @returns {Boolean} Result of the test.
  */
 exports.isNumber = (value) => {
-
+    return !isNaN(parseFloat(value)) && isFinite(value);
 };
 
 /**
@@ -49,8 +49,8 @@ exports.isNumber = (value) => {
  * @name isInteger
  * @function
  * @param {} value - Value to test.
- * @returns {String} Result of the test.
+ * @returns {Boolean} Result of the test.
  */
 exports.isInteger = (value) => {
-
+    return !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
 };
