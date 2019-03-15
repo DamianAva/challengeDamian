@@ -31,7 +31,7 @@ module.exports = [
         }
     },
     {
-        path: '/event/:id',
+        path: '/event/:id(\\d+)',
         entity: 'event',
         method: 'get',
         type: 'get',
@@ -66,7 +66,7 @@ module.exports = [
         }
     },
     {
-        path: '/payment/:id',
+        path: '/payment/:id(\\d+)',
         entity: 'payment',
         method: 'get',
         type: 'get',
@@ -101,7 +101,7 @@ module.exports = [
         }
     },
     {
-        path: '/theatre/:id',
+        path: '/theatre/:id(\\d+)',
         entity: 'theatre',
         method: 'get',
         type: 'get',
@@ -116,7 +116,17 @@ module.exports = [
         }
     },
     {
-        path: '/theatre/:id',
+        path: '/theatre/profile',
+        entity: 'theatre',
+        method: 'profile',
+        type: 'get',
+        auth: true,
+        input: {
+            params: {}
+        }
+    },
+    {
+        path: '/theatre/update',
         entity: 'theatre',
         method: 'update',
         type: 'put',
@@ -148,17 +158,7 @@ module.exports = [
         }
     },
     {
-        path: '/theatre/profile',
-        entity: 'theatre',
-        method: 'profile',
-        type: 'get',
-        auth: true,
-        input: {
-            params: {}
-        }
-    },
-    {
-        path: '/theatre-room/:id',
+        path: '/theatre-room/:id(\\d+)',
         entity: 'theatre',
         method: 'getRoom',
         type: 'get',
