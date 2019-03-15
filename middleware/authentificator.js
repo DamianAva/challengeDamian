@@ -19,7 +19,7 @@ exports.auth = (req, res, next) => {
     if (!token) {
         req.session = null;
         return next();
-    };
+    }
 
     token = token.replace('Bearer ', ''); // Cambiarlo a una exp o algo mejor
 

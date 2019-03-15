@@ -16,7 +16,7 @@ exports.getConnection = (cb) => {
     pool.getConnection((err, conn) => {
         return cb(err, conn);
     });
-}
+};
 
 /**
  * Starts a transaction on a connection.
@@ -30,7 +30,7 @@ exports.startTransaction = (conn, cb) => {
     conn.beginTransaction((err) => {
         return cb(err);
     });
-}
+};
 
 /**
  * Gets a connection, executes a query and closes it after it finish.
@@ -54,7 +54,7 @@ exports.executeQuery = (query, params, cb) => {
             return cb(err, results, fields);
         });
     });
-}
+};
 
 /**
  * Commits a transaction.
@@ -76,7 +76,7 @@ exports.commitTransaction = (conn, cb) => {
             return cb();
         }
     });
-}
+};
 
 /**
  * Cancels a transaction and rollback the changes.
@@ -91,7 +91,7 @@ exports.cancelTransaction = (conn, cb) => {
         conn.release();
         return cb();
     });
-}
+};
 
 /**
  * Closes a connection.
@@ -102,4 +102,4 @@ exports.cancelTransaction = (conn, cb) => {
  */
 exports.closeConnection = (conn) => {
     return conn.release();
-}
+};

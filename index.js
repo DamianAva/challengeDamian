@@ -18,8 +18,8 @@ app.use((req, res, next) => {
         oneof = true;
     }
 
-    res.header("Access-Control-Allow-Headers", "X-Requested-With, Authorization, Content-Type, Accept, Origin");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, Authorization, Content-Type, Accept, Origin');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
 
     if (oneof) {
         res.header('Access-Control-Max-Age', 60 * 60 * 24 * 365);
@@ -50,4 +50,4 @@ app.use(compress());
 
 app.use('/', router);
 
-let server = http.createServer(app).listen(config.port);
+http.createServer(app).listen(config.port);

@@ -308,13 +308,18 @@ module.exports = {
     WHERE
         email = ? AND password = ?;`,
     
-    insertTheatre: `INSERT INTO theatre SET ?`,
+    insertTheatre: `INSERT INTO 
+        theatre SET ?`,
 
-    insertUser: `INSERT INTO user SET ?`,
+    insertUser: `INSERT INTO 
+        user SET ?`,
 
-    updateNotification: `UPDATE notification SET ? WHERE user_id = ? AND id = ?;`,
+    updateNotification: `UPDATE notification SET ? 
+        WHERE user_id = ? AND id = ?;`,
 
-    updateTheatre: `UPDATE theatre SET ? WHERE user_id = ?;`,
+    updateTheatre: `UPDATE theatre SET ? 
+        WHERE user_id = ?;`,
 
-    updateUser: `UPDATE user SET ? WHERE id = ?;`,
+    updateUser: `UPDATE user SET ? 
+        WHERE id = ?;`,
 };
