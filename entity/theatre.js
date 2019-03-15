@@ -286,10 +286,6 @@ exports.get = (req, res, next) => {
     });
 };
 
-exports.add = () => {};
-
-//----
-
 exports.registerRoom = () => {};
 exports.updateRoom = () => {};
 

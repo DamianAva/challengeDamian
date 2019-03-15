@@ -225,6 +225,26 @@ module.exports = [
         }
     },
     {
+        path: '/user/theatre',
+        entity: 'user',
+        method: 'registerTheatre',
+        type: 'post',
+        auth: true,
+        input: {
+            params: {},
+            body: {
+                user: {
+                    type: 'object',
+                    required: true
+                },
+                theatre: {
+                    type: 'object',
+                    required: true
+                }
+            }
+        }
+    },
+    {
         path: '/user/update-account',
         entity: 'user',
         method: 'updateAccount',

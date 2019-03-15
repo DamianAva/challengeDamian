@@ -7,6 +7,7 @@ const config = require('../config/config');
 const queries = require('../config/queries');
 const util = require('../helper/util');
 const crypto = require('crypto');
+const async = require('async');
 
 /**
  * Login an user in the system.
@@ -243,5 +244,111 @@ exports.forgotPassword = (req, res, next) => {
                 return res.status(200).end();
             });
         });
+    });
+};
+
+/**
+ * Register a new theatre, creating a new user.
+ * 
+ * @name registerTheatre
+ * @function
+ * @param {Object} req - The request object of Express.
+ * @param {Object} req.body - Body of the request.
+ * @param {String} req.body.user - Data of the user to be created.
+ * @param {String} req.body.theatre - Data of the theatre to be created.
+ * @param {Object} res - The response object of Express.
+ * @param {Function} next - Express callback argument.
+ */
+exports.registerTheatre = (req, res, next) => {
+    let userData = req.body.user;
+    let theatreData = req.body.theatre;
+
+    async.waterfall([
+        (cb) => {
+            mysqlService.getConnection((err, conn) => {
+                return cb(err, conn);
+            });
+        },
+        (conn, cb) => {
+            mysqlService.startTransaction(conn, (err) => {
+                return cb(err, conn);
+            });
+        },
+        (conn, cb) => {
+            let hashedPassword = crypto.createHash('sha256').update(userData.password).digest('hex');
+
+            let user = {
+                fullname: userData.fullname,
+                email: userData.email,
+                phone: userData.phone,
+                type: userData.type,
+                password: hashedPassword,
+                responsability: 1 // No esta claro que siginifica este valor
+            };
+
+            conn.query(queries.insertUser, [user], (err, results) => {
+                if (err) {
+                    return cb(err, conn);
+                }
+
+                if (!results.insertId) {
+                    return cb({ err: 'Nothing was inserted' }, conn);
+                }
+
+                return cb(null, conn, results.insertId);
+            });
+        },
+        (conn, userId, cb) => {
+            let theatre = {
+                name: theatreData.name,
+                address: theatreData.address,
+                phone: theatreData.phone,
+                email: theatreData.email,
+                site_url: theatreData.site_url,
+                history: theatreData.history,
+                country: theatreData.country,
+                province: theatreData.province,
+                city: theatreData.city,
+                circuit_type: theatreData.circuit_type,
+                // responsability: theatreData.responsability,
+                user_id: userId
+            };
+
+            conn.query(queries.insertTheatre, [theatre], (err, results) => {
+                if (err) {
+                    return cb(err, conn);
+                }
+
+                if (!results.insertId) {
+                    return cb({ err: 'Nothing was inserted' }, conn);
+                }
+
+                return cb(null, conn, userId);
+            });
+        }
+    ], (err, conn, userId) => {
+        if (err) {
+            if (conn) {
+                mysqlService.closeConnection(conn);
+            }
+
+            return res.status(500).send('Database error.');
+        } else {
+            mysqlService.commitTransaction(conn, (err) => {
+                if (err) {
+                    return res.status(500).send('Database error.');
+                }
+
+                let resp = {
+                    id: userId,
+                    fullname: userData.fullname,
+                    email: userData.email,
+                    phone: userData.phone,
+                    type: userData.type
+                };
+
+                return res.send(resp);
+            });
+        }
     });
 };

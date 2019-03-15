@@ -54,3 +54,15 @@ exports.isNumber = (value) => {
 exports.isInteger = (value) => {
     return !isNaN(value) && parseInt(Number(value)) == value && !isNaN(parseInt(value, 10));
 };
+
+/**
+ * Checks if a value is an object.
+ * 
+ * @name isObject
+ * @function
+ * @param {} value - Value to test.
+ * @returns {Boolean} Result of the test.
+ */
+exports.isObject = (value) => {
+    return typeof value === 'object' && value !== null;
+};

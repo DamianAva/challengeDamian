@@ -13,7 +13,7 @@ let pool = mysql.createPool(config.mysql);
  * @param {Function} cb - Callback argument.
  */
 exports.getConnection = (cb) => {
-    pool.getConnection(function (err, conn) {
+    pool.getConnection((err, conn) => {
         return cb(err, conn);
     });
 }
@@ -27,7 +27,7 @@ exports.getConnection = (cb) => {
  * @param {Function} cb - Callback argument.
  */
 exports.startTransaction = (conn, cb) => {
-    conn.beginTransaction(function (err) {
+    conn.beginTransaction((err) => {
         return cb(err);
     });
 }
@@ -43,7 +43,7 @@ exports.startTransaction = (conn, cb) => {
  * @param {Function} cb - Callback argument.
  */
 exports.executeQuery = (query, params, cb) => {
-    pool.getConnection(function (err, conn) {
+    pool.getConnection((err, conn) => {
         if (err) {
             return cb(err);
         }
@@ -65,12 +65,14 @@ exports.executeQuery = (query, params, cb) => {
  * @param {Function} cb - Callback argument.
  */
 exports.commitTransaction = (conn, cb) => {
-    conn.commit(function (err) {
+    conn.commit((err) => {
         if (err) {
-            conn.rollback(function () {
+            conn.rollback(() => {
+                conn.release();
                 return cb(err);
             });
         } else {
+            conn.release();
             return cb();
         }
     });
@@ -85,7 +87,8 @@ exports.commitTransaction = (conn, cb) => {
  * @param {Function} cb - Callback argument.
  */
 exports.cancelTransaction = (conn, cb) => {
-    conn.rollback(function () {
+    conn.rollback(() => {
+        conn.release();
         return cb();
     });
 }

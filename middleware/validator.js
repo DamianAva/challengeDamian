@@ -98,6 +98,9 @@ let validateValues = (value, routeConfig) => {
         case 'float':
             return testNumber(value, routeConfig);
             break;
+        case 'object':
+            return testObject(value, routeConfig);
+            break;
     }
 
     return 'Bad config.';
@@ -106,7 +109,7 @@ let validateValues = (value, routeConfig) => {
 /**
  * Tests if a value is a valid string.
  * 
- * @name validateValues
+ * @name testString
  * @function
  * @param {Object} value - Value to be tested.
  * @param {Object} routeConfig - Configuration paramaters of the route.
@@ -131,7 +134,7 @@ let testString = (value, routeConfig) => {
 /**
  * Tests if a value is a valid number.
  * 
- * @name validateValues
+ * @name testNumber
  * @function
  * @param {Object} value - Value to be tested.
  * @param {Object} routeConfig - Configuration paramaters of the route.
@@ -156,7 +159,7 @@ let testNumber = (value, routeConfig) => {
 /**
  * Tests if a value is a valid integer.
  * 
- * @name validateValues
+ * @name testInteger
  * @function
  * @param {Object} value - Value to be tested.
  * @param {Object} routeConfig - Configuration paramaters of the route.
@@ -173,6 +176,23 @@ let testInteger = (value, routeConfig) => {
 
     if (routeConfig.maxValue && value > routeConfig.maxValue) {
         return 'Value is higher than the maximum.';
+    }
+
+    return null;
+};
+
+/**
+ * Tests if a value is a valid object.
+ * 
+ * @name testObject
+ * @function
+ * @param {Object} value - Value to be tested.
+ * @param {Object} routeConfig - Configuration paramaters of the route.
+ * @return {String} Return an error if something fails or null if is valid.
+ */
+let testObject = (value, routeConfig) => {
+    if (!util.isObject(value)) {
+        return 'Invalid object.';
     }
 
     return null;
