@@ -5,7 +5,7 @@
  * 
  * @name generateString
  * @function
- * @param {Object} size - Size of the string to generate.
+ * @param {Integer} size - Size of the string to generate.
  * @returns {String} Generated string.
  */
 exports.generateString = (size = 10) => {

@@ -36,7 +36,7 @@ exports.all = (req, res, next) => {
  * @param {Integer} req.session.id - User ID.
  * @param {Object} req.body - The body of the request.
  * @param {String} req.body.type - Type of the notification.
- * @param {String} req.body.idDetail - Notification ID. (La parte de detalle no esta muy clara en Doc)
+ * @param {Integer} req.body.idDetail - Notification ID. (La parte de detalle no esta muy clara en Doc)
  * @param {Object} res - The response object of Express.
  * @param {Function} next - Express callback argument.
  */

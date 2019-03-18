@@ -21,7 +21,7 @@ exports.auth = (req, res, next) => {
         return next();
     }
 
-    token = token.replace('Bearer ', ''); // Cambiarlo a una exp o algo mejor
+    token = token.replace('Bearer ', ''); // Se deberia cambiar por algo mejor como una expresion regular
 
     redisService.get(`TOKEN_${token}`, (err, result) => {
         if (err) {
