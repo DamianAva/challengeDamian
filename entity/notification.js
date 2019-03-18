@@ -29,7 +29,7 @@ exports.all = (req, res, next) => {
 /**
  * Mark a notification of the user as read.
  * 
- * @name all
+ * @name update
  * @function
  * @param {Object} req - The request object of Express.
  * @param {Object} req.session - User session data.
@@ -59,6 +59,6 @@ exports.update = (req, res, next) => {
             return res.status(500).send('Database Error.');
         }
 
-        return res.status(200).end;
+        return res.status(200).end();
     });
 };

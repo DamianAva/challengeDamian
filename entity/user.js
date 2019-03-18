@@ -200,7 +200,7 @@ exports.updateAccount = (req, res, next) => {
 /**
  * Sends an email with a code so an user can reset their password.
  * 
- * @name updateAccount
+ * @name forgotPassword
  * @function
  * @param {Object} req - The request object of Express.
  * @param {Object} req.body - Body of the request.

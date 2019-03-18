@@ -6,7 +6,7 @@ const queries = require('../config/queries');
 /**
  * Returns a payment of the user by ID.
  * 
- * @name all
+ * @name get
  * @function
  * @param {Object} req - The request object of Express.
  * @param {Object} req.params - The params of the request.
