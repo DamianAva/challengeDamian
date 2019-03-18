@@ -14,7 +14,7 @@ const config = require('../config/config');
  */
 exports.send = (params, content, cb) => {
     if (!params.from || !params.to || !params.subject || !content) {
-        return cb({ err: 'Faltan datos' });
+        return cb({ err: 'Missing data.' });
     }
 
     let mailOptions = {
