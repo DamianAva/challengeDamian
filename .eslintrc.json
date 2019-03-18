@@ -15,7 +15,51 @@
     "rules": {
         "indent": [
             "error",
-            4
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "space-before-blocks": [
+            "error"
+        ],
+        "object-curly-spacing": [
+            "error", "always"
+        ],
+        "keyword-spacing": [
+            "error"
+        ],
+        "space-infix-ops": [
+            "error"
+        ],
+        "no-var": [
+            "error"
+        ],
+        "yoda": [
+            "error"
+        ],
+        "no-case-declarations": [
+            "error"
+        ],
+        "no-useless-escape": [
+            "error"
+        ],
+        "quote-props": [
+            "error",
+            "consistent-as-needed"
+        ],
+        "no-multi-str": [
+            "error"
+        ],
+        "no-lonely-if": [
+            "error"
+        ],
+        "nonblock-statement-body-position": [
+            "error",
+            "below"
+        ],
+        "no-const-assign": [
+            "error"
         ],
         "linebreak-style": [
             "error",

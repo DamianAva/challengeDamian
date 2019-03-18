@@ -10,7 +10,7 @@
  */
 exports.generateString = (size = 10) => {
     let text = '';
-    var possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let possibleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   
     for (let i = 0; i < size; i++) {
         text += possibleChars.charAt(Math.floor(Math.random() * possibleChars.length));

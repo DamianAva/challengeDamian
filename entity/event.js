@@ -61,7 +61,7 @@ exports.get = (req, res, next) => {
         };
 
         for (const result of results) {
-            if(result.requirement_id && !parsedResults.requirements[result.requirement_id]){
+            if (result.requirement_id && !parsedResults.requirements[result.requirement_id]) {
                 parsedResults.requirements[result.requirement_id] = {
                     covered_level: result.covered_level,
                     comment: result.comment,
@@ -69,7 +69,7 @@ exports.get = (req, res, next) => {
                 };
             }
 
-            if(result.image_id && !parsedResults.gallery[result.image_id]){
+            if (result.image_id && !parsedResults.gallery[result.image_id]) {
                 parsedResults.gallery[result.image_id] = {
                     id: result.image_id,
                     src: result.src,
@@ -139,7 +139,7 @@ exports.all = (req, res, next) => {
                 };
             }
 
-            if(result.requirement_id && !parsedResults[result.id].requirements[result.requirement_id]){
+            if (result.requirement_id && !parsedResults[result.id].requirements[result.requirement_id]) {
                 parsedResults[result.id].requirements[result.requirement_id] = {
                     covered_level: result.covered_level,
                     comment: result.comment,
@@ -147,7 +147,7 @@ exports.all = (req, res, next) => {
                 };
             }
 
-            if(result.image_id && !parsedResults[result.id].gallery[result.image_id]){
+            if (result.image_id && !parsedResults[result.id].gallery[result.image_id]) {
                 parsedResults[result.id].gallery[result.image_id] = {
                     id: result.image_id,
                     src: result.src,

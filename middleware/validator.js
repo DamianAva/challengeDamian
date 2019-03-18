@@ -88,15 +88,15 @@ let validateValues = (value, routeConfig) => {
     }
 
     switch (routeConfig.type) {
-    case 'string':
-        return testString(value, routeConfig);
-    case 'int':
-        return testInteger(value, routeConfig);
-    case 'number':
-    case 'float':
-        return testNumber(value, routeConfig);
-    case 'object':
-        return testObject(value, routeConfig);
+        case 'string':
+            return testString(value, routeConfig);
+        case 'int':
+            return testInteger(value, routeConfig);
+        case 'number':
+        case 'float':
+            return testNumber(value, routeConfig);
+        case 'object':
+            return testObject(value, routeConfig);
     }
 
     return 'Bad config.';

@@ -111,7 +111,7 @@ exports.all = (req, res, next) => {
                 };  
             }
 
-            if(result.img_id && !parsedResults[result.id].gallery[result.img_id]){
+            if (result.img_id && !parsedResults[result.id].gallery[result.img_id]) {
                 parsedResults[result.id].gallery[result.img_id] = {
                     id: result.img_id,
                     src: result.src,
@@ -119,7 +119,7 @@ exports.all = (req, res, next) => {
                 };
             }
 
-            if(result.room_id && !parsedResults[result.id].rooms[result.room_id]){
+            if (result.room_id && !parsedResults[result.id].rooms[result.room_id]) {
                 parsedResults[result.id].rooms[result.room_id] = {
                     id: result.room_id,
                     name: result.room_name,
@@ -186,7 +186,7 @@ exports.profile = (req, res, next) => {
         };
 
         for (const result of results) {
-            if(result.img_id && !parsedResults.gallery[result.img_id]){
+            if (result.img_id && !parsedResults.gallery[result.img_id]) {
                 parsedResults.gallery[result.img_id] = {
                     id: result.img_id,
                     src: result.src,
@@ -194,7 +194,7 @@ exports.profile = (req, res, next) => {
                 };
             }
 
-            if(result.room_id && !parsedResults.rooms[result.room_id]){
+            if (result.room_id && !parsedResults.rooms[result.room_id]) {
                 parsedResults.rooms[result.room_id] = {
                     id: result.room_id,
                     name: result.room_name,
@@ -257,7 +257,7 @@ exports.get = (req, res, next) => {
         };
 
         for (const result of results) {
-            if(result.img_id && !parsedResults.gallery[result.img_id]){
+            if (result.img_id && !parsedResults.gallery[result.img_id]) {
                 parsedResults.gallery[result.img_id] = {
                     id: result.img_id,
                     src: result.src,
@@ -265,7 +265,7 @@ exports.get = (req, res, next) => {
                 };
             }
 
-            if(result.room_id && !parsedResults.rooms[result.room_id]){
+            if (result.room_id && !parsedResults.rooms[result.room_id]) {
                 parsedResults.rooms[result.room_id] = {
                     id: result.room_id,
                     name: result.room_name,
