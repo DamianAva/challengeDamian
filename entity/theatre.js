@@ -309,7 +309,7 @@ exports.getRoom = (req, res, next) => {
         }
 
         if (!results.length) {
-            return res.send({});
+            return res.status(500).send('Can\'t find the Room.');
         }
 
         let parsedResults = {
