@@ -61,10 +61,6 @@
         "no-const-assign": [
             "error"
         ],
-        "linebreak-style": [
-            "error",
-            "windows"
-        ],
         "quotes": [
             "error",
             "single"
