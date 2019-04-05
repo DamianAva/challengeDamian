@@ -1,0 +1,18 @@
+get:
+  security:
+    - bearerAuth: []
+  operationId: paymentAll
+  description: Returns all the payments of the user
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/paymentComplete.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

@@ -1,7 +1,7 @@
 'use strict';
 
-const mysqlService = require('../service/mysql');
-const queries = require('../config/queries');
+const mysqlService = require('../../service/mysql');
+const queries = require('./queries');
 
 /**
  * Update the info of the logged theatre.
@@ -31,16 +31,16 @@ exports.update = (req, res, next) => {
 
     mysqlService.executeQuery(queries.updateTheatre, params, (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!results.affectedRows) {
-            return res.status(500).send('Can\'t find the theatre.');
+            return res.status(400).send('Can\'t find the theatre.');
         }
 
         mysqlService.executeQuery(queries.getTheatreAfterUpdate, [userId], (err, results) => {
             if (err || !results.length) {
-                return res.status(500).send('Database Error.');
+                return res.status(500).send('Internal Server Error.');
             }
 
             let parsedResults = {
@@ -85,7 +85,7 @@ exports.update = (req, res, next) => {
 exports.all = (req, res, next) => {
     mysqlService.executeQuery(queries.getAllTheatre, [], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         let parsedResults = {};
@@ -160,11 +160,11 @@ exports.profile = (req, res, next) => {
     
     mysqlService.executeQuery(queries.getTheatreByUserId, [userId], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!results.length) {
-            return res.status(500).send('Can\'t find the theatre.');
+            return res.status(400).send('Can\'t find the theatre.');
         }
 
         let parsedResults = {
@@ -231,7 +231,7 @@ exports.get = (req, res, next) => {
 
     mysqlService.executeQuery(queries.getTheatreById, [theatreId], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!results.length) {
@@ -290,7 +290,7 @@ exports.registerRoom = () => {};
 exports.updateRoom = () => {};
 
 /**
- * Return a theatre room info by id
+ * Returns a theatre room info by id
  * 
  * @name getRoom
  * @function
@@ -305,11 +305,11 @@ exports.getRoom = (req, res, next) => {
 
     mysqlService.executeQuery(queries.getTheatreRoomById, [theatreRoomId], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!results.length) {
-            return res.status(500).send('Can\'t find the Room.');
+            return res.status(400).send('Can\'t find the room.');
         }
 
         let parsedResults = {

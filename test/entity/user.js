@@ -29,15 +29,15 @@ let fakeExecuteQuery = function (query, cb) {
     return cb(...fakeQueries[query]());
 };
 
-let user = proxyquire('../../entity/user.js', {
-    '../config/queries': {
+let user = proxyquire('../../entity/user/controller.js', {
+    './queries': {
         getUserByEmailPassword: 'getUserByEmailPassword',
         updateUser: 'updateUser',
         getUserByEmail: 'getUserByEmail',
         insertUser: 'insertUser',
         insertTheatre: 'insertTheatre'
     },
-    '../service/mysql': {
+    '../../service/mysql': {
         executeQuery: function(query, params, cb) {
             return fakeExecuteQuery(query, cb);
         }

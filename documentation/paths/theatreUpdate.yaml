@@ -1,0 +1,23 @@
+put:
+  security:
+    - bearerAuth: []
+  operationId: theatreUpdate
+  description: Update the info of the logged theatre
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/theatreBodyUpdate.yaml'
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/theatreAfterUpdate.yaml'
+    '400':
+      description: Can't find the theatre
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

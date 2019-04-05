@@ -1,7 +1,7 @@
 'use strict';
 
-const mysqlService = require('../service/mysql');
-const queries = require('../config/queries');
+const mysqlService = require('../../service/mysql');
+const queries = require('./queries');
 
 /**
  * Returns a payment of the user by ID.
@@ -49,7 +49,7 @@ exports.all = (req, res, next) => {
 
     mysqlService.executeQuery(queries.getPaymentsByUserId, [userId], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         return res.send(results);

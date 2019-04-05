@@ -17,12 +17,12 @@ let fakeExecuteQuery = function (query, cb) {
     return cb(...fakeQueries[query]());
 };
 
-let notification = proxyquire('../../entity/notification.js', {
-    '../config/queries': {
+let notification = proxyquire('../../entity/notification/controller.js', {
+    './queries': {
         getNotificationByUserId: 'getNotificationByUserId',
         updateNotification: 'updateNotification'
     },
-    '../service/mysql': {
+    '../../service/mysql': {
         executeQuery: function(query, params, cb) {
             return fakeExecuteQuery(query, cb);
         }

@@ -1,0 +1,18 @@
+get:
+  security:
+    - bearerAuth: []
+  operationId: theatretProfile
+  description: Return a info of the logged theatre
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/theatreComplete.yaml'
+    '400':
+      description: Can't find the theatre
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

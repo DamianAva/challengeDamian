@@ -29,8 +29,8 @@ let fakeExecuteQuery = function (query, cb) {
     return cb(...fakeQueries[query]());
 };
 
-let theatre = proxyquire('../../entity/theatre.js', {
-    '../config/queries': {
+let theatre = proxyquire('../../entity/theatre/controller.js', {
+    './queries': {
         updateTheatre: 'updateTheatre',
         getTheatreAfterUpdate: 'getTheatreAfterUpdate',
         getAllTheatre: 'getAllTheatre',
@@ -38,7 +38,7 @@ let theatre = proxyquire('../../entity/theatre.js', {
         getTheatreById: 'getTheatreById',
         getTheatreRoomById: 'getTheatreRoomById'
     },
-    '../service/mysql': {
+    '../../service/mysql': {
         executeQuery: function(query, params, cb) {
             return fakeExecuteQuery(query, cb);
         }

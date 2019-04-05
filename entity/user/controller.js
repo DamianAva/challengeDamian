@@ -1,16 +1,16 @@
 'use strict';
 
-const mysqlService = require('../service/mysql');
-const redisService = require('../service/redis');
-const emailService = require('../service/email');
-const config = require('../config/config');
-const queries = require('../config/queries');
-const util = require('../helper/util');
+const mysqlService = require('../../service/mysql');
+const redisService = require('../../service/redis');
+const emailService = require('../../service/email');
+const config = require('../../config/config');
+const queries = require('./queries');
+const util = require('../../helper/util');
 const crypto = require('crypto');
 const async = require('async');
 
 /**
- * Login an user in the system.
+ * Login an user into the system.
  * 
  * @name login
  * @function
@@ -28,11 +28,11 @@ exports.login = (req, res, next) => {
     
     mysqlService.executeQuery(queries.getUserByEmailPassword, [email, hashedPassword], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!results.length) {
-            return res.status(500).send('User not found.');
+            return res.status(400).send('User not found.');
         }
 
         let token = util.generateString(28);
@@ -40,7 +40,7 @@ exports.login = (req, res, next) => {
 
         redisService.insert(`TOKEN_${token}`, JSON.stringify(result), config.tokenTime, (err) => {
             if (err) {
-                return res.status(500).send('Cache Error.');
+                return res.status(500).send('Internal Server Error.');
             }
 
             let resp = {
@@ -68,7 +68,7 @@ exports.login = (req, res, next) => {
 };
 
 /**
- * Logout an user of the system.
+ * Logout an user out of the system.
  * 
  * @name logout
  * @function
@@ -83,7 +83,7 @@ exports.logout = (req, res, next) => {
 
     redisService.delete(`TOKEN_${token}`, (err) => {
         if (err) {
-            return res.status(500).send('Cache Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         return res.status(200).end();
@@ -115,7 +115,7 @@ exports.changePassword = (req, res, next) => {
 
     mysqlService.executeQuery(queries.updateUser, params, (err, result) => {
         if (err || !result.affectedRows) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         return res.status(200).end();
@@ -140,11 +140,11 @@ exports.resetPassword = (req, res, next) => {
 
     redisService.get(`RESET_${resetToken}`, (err, result) => {
         if (err) {
-            return res.status(500).send('Cache Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!result) {
-            return res.status(500).send('Wrong code.');
+            return res.status(400).send('The code is incorrect.');
         }
 
         let hashedPassword = crypto.createHash('sha256').update(password).digest('hex');
@@ -155,7 +155,7 @@ exports.resetPassword = (req, res, next) => {
 
         mysqlService.executeQuery(queries.updateUser, params, (err, result) => {
             if (err || !result.affectedRows) {
-                return res.status(500).send('Database Error.');
+                return res.status(500).send('Internal Server Error.');
             }
 
             redisService.delete(`RESET_${resetToken}`, (err, result) => {
@@ -190,7 +190,7 @@ exports.updateAccount = (req, res, next) => {
 
     mysqlService.executeQuery(queries.updateUser, params, (err, result) => {
         if (err || !result.affectedRows) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         return res.status(200).end();
@@ -213,11 +213,11 @@ exports.forgotPassword = (req, res, next) => {
 
     mysqlService.executeQuery(queries.getUserByEmail, [email], (err, result) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!result[0]) {
-            return res.status(500).send('The email doesn\'t exist.');
+            return res.status(400).send('The email doesn\'t exist.');
         }
 
         let resetToken = util.generateString(50);
@@ -225,7 +225,7 @@ exports.forgotPassword = (req, res, next) => {
         /* Guardar el token en Redis */
         redisService.insert(`RESET_${resetToken}`, result[0].id, config.resetTime, (err) => {
             if (err) {
-                return res.status(500).send('Cache Error.');
+                return res.status(500).send('Internal Server Error.');
             }
 
             let params = {
@@ -238,7 +238,7 @@ exports.forgotPassword = (req, res, next) => {
     
             emailService.send(params, content, (err, info) => {
                 if (err) {
-                    return res.status(500).send('Error sending the email.');
+                    return res.status(500).send('Internal Server Error.');
                 }
     
                 return res.status(200).end();
@@ -332,11 +332,11 @@ exports.registerTheatre = (req, res, next) => {
                 mysqlService.closeConnection(conn);
             }
 
-            return res.status(500).send('Database error.');
+            return res.status(500).send('Internal Server Error.');
         } else {
             mysqlService.commitTransaction(conn, (err) => {
                 if (err) {
-                    return res.status(500).send('Database error.');
+                    return res.status(500).send('Internal Server Error.');
                 }
 
                 let resp = {

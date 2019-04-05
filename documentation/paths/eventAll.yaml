@@ -1,0 +1,18 @@
+get:
+  security:
+    - bearerAuth: []
+  operationId: eventAll
+  description: Returns all the events
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/eventComplete.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

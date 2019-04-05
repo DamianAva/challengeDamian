@@ -31,135 +31,6 @@ module.exports = {
     LEFT JOIN
         theatre_room as theroom ON the.id = theroom.theatre_id;`,
     
-    getAllEvents: `SELECT
-        eve.id,
-        eve.author,
-        eve.duration,
-        eve.director,
-        eve.name,
-        eve.profile_image,
-        eve.premiere,
-        eve.distance,
-        eve.national_cachet,
-        eve.international_cachet,
-        eve.borderaux,
-        eve.cover_image,
-        eve.trailer,
-        eve.cast,
-        eve.synthesis,
-        eve.city,
-        eve.genre,
-        eve.public_type,
-        eve.needed_people,
-        eve.assembly_hours,
-        eve.disassembly_hours,
-        eve.needed_space,
-        eve.sound,
-        eve.scenography,
-        evereq.id AS requirement_id,
-        evereq.covered_level,
-        evereq.comment,
-        reqdes.name AS requirement_description,
-        eveimg.id AS image_id,
-        eveimg.src,
-        eveimg.alt
-    FROM 
-        event AS eve
-    LEFT JOIN
-        event_requirement AS evereq ON evereq.event_id = eve.id
-    LEFT JOIN
-        event_image AS eveimg ON eveimg.event_id = eve.id
-    LEFT JOIN
-        requirement_description AS reqdes ON evereq.description_id = reqdes.id;`,
-    
-    getEventById: `SELECT
-        eve.id,
-        eve.author,
-        eve.duration,
-        eve.director,
-        eve.name,
-        eve.profile_image,
-        eve.premiere,
-        eve.distance,
-        eve.national_cachet,
-        eve.international_cachet,
-        eve.borderaux,
-        eve.cover_image,
-        eve.trailer,
-        eve.cast,
-        eve.synthesis,
-        eve.city,
-        eve.genre,
-        eve.public_type,
-        eve.needed_people,
-        eve.assembly_hours,
-        eve.disassembly_hours,
-        eve.needed_space,
-        eve.sound,
-        eve.scenography,
-        evereq.id AS requirement_id,
-        evereq.covered_level,
-        evereq.comment,
-        reqdes.name AS requirement_description,
-        eveimg.id AS image_id,
-        eveimg.src,
-        eveimg.alt
-    FROM 
-        event AS eve
-    LEFT JOIN
-        event_requirement AS evereq ON evereq.event_id = eve.id
-    LEFT JOIN
-        event_image AS eveimg ON eveimg.event_id = eve.id
-    LEFT JOIN
-        requirement_description AS reqdes ON evereq.description_id = reqdes.id
-    WHERE
-        eve.id = ?;`,
-    
-    getNotificationByUserId: `SELECT 
-        id,
-        type,
-        text,
-        \`read\`,
-        date
-    FROM 
-        notification
-    WHERE
-        user_id = ?;`,
-
-    getPaymentsById: `SELECT
-        pay.id,
-        pay.code,
-        pay.theatre_id,
-        pay.show_id,
-        pay.date,
-        pay.amount,
-        pay.action_id,
-        pay.status,
-        payact.name
-    FROM 
-        payment AS pay
-    LEFT JOIN
-        payment_action AS payact ON pay.action_id = payact.id
-    WHERE
-        pay.user_id = ? AND pay.id = ?;`,
-
-    getPaymentsByUserId: `SELECT
-        pay.id,
-        pay.code,
-        pay.theatre_id,
-        pay.show_id,
-        pay.date,
-        pay.amount,
-        pay.action_id,
-        pay.status,
-        payact.name
-    FROM 
-        payment AS pay
-    LEFT JOIN
-        payment_action AS payact ON pay.action_id = payact.id
-    WHERE
-        pay.user_id = ?;`,
-    
     getTheatreAfterUpdate: `SELECT 
         the.id,
         the.name,
@@ -183,7 +54,7 @@ module.exports = {
         theatre_image AS theimg ON the.id = theimg.theatre_id
     WHERE
         the.user_id = ?;`,
-
+    
     getTheatreById: `SELECT 
         the.id,
         the.name,
@@ -286,40 +157,6 @@ module.exports = {
     WHERE
         theroom.id = ?;`,
     
-    getUserByEmail: `SELECT 
-        id,
-        fullname,
-        phone,
-        type,
-        responsability
-    FROM 
-        user
-    WHERE
-        email = ?;`,
-
-    getUserByEmailPassword: `SELECT 
-        id,
-        fullname,
-        phone,
-        type,
-        responsability
-    FROM 
-        user
-    WHERE
-        email = ? AND password = ?;`,
-    
-    insertTheatre: `INSERT INTO 
-        theatre SET ?`,
-
-    insertUser: `INSERT INTO 
-        user SET ?`,
-
-    updateNotification: `UPDATE notification SET ? 
-        WHERE user_id = ? AND id = ?;`,
-
     updateTheatre: `UPDATE theatre SET ? 
         WHERE user_id = ?;`,
-
-    updateUser: `UPDATE user SET ? 
-        WHERE id = ?;`,
 };

@@ -1,0 +1,31 @@
+type: object
+properties:
+  id:
+    type: integer
+  code:
+    type: integer
+  theatre_id:
+    type: integer
+  show_id:
+    type: integer
+  date:
+    type: string
+    format: date-time
+  amount:
+    type: number
+    format: float
+  action_id:
+    type: integer
+  status:
+    type: integer
+  name:
+    type: string
+
+
+
+
+
+
+
+
+

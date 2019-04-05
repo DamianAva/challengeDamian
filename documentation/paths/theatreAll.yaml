@@ -1,0 +1,18 @@
+get:
+  security:
+    - bearerAuth: []
+  operationId: theatretAll
+  description: Return a list with all the theatres
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/theatreComplete.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

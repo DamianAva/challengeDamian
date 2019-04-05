@@ -1,7 +1,7 @@
 'use strict';
 
-const mysqlService = require('../service/mysql');
-const queries = require('../config/queries');
+const mysqlService = require('../../service/mysql');
+const queries = require('./queries');
 
 /**
  * Return all the notifications of the user.
@@ -19,7 +19,7 @@ exports.all = (req, res, next) => {
 
     mysqlService.executeQuery(queries.getNotificationByUserId, [userId], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         return res.send(results);
@@ -35,7 +35,7 @@ exports.all = (req, res, next) => {
  * @param {Object} req.session - User session data.
  * @param {Integer} req.session.id - User ID.
  * @param {Object} req.body - The body of the request.
- * @param {String} req.body.type - Type of the notification.
+ * @param {Integer} req.body.type - Type of the notification.
  * @param {Integer} req.body.idDetail - Notification ID. (La parte de detalle no esta muy clara en Doc)
  * @param {Object} res - The response object of Express.
  * @param {Function} next - Express callback argument.
@@ -56,7 +56,7 @@ exports.update = (req, res, next) => {
 
     mysqlService.executeQuery(queries.updateNotification, params, (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         return res.status(200).end();

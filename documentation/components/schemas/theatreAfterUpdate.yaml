@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  address:
+    type: integer
+  phone:
+    type: string
+  email:
+    type: string
+  site_url:
+    type: string
+  history:
+    type: string
+  country:
+    type: string
+  province:
+    type: string
+  profile_image:
+    type: string
+  cover_image:
+    type: string
+  city:
+    type: string
+  circuit_type:
+    type: integer
+  gallery:
+    type: array
+    items:
+      $ref: './theatreImage.yaml'

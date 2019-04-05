@@ -1,0 +1,18 @@
+get:
+  security:
+    - bearerAuth: []
+  operationId: notificationAll
+  description: Return all the notifications of the user
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../components/schemas/notification.yaml'
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

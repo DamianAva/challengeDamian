@@ -1,0 +1,13 @@
+type: object
+properties:
+  id:
+    type: integer
+  type:
+    type: integer
+  text:
+    type: string
+  read:
+    type: integer
+  premiere:
+    type: string
+    format: date-time

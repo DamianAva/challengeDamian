@@ -1,0 +1,13 @@
+type: object
+additionalProperties: false
+properties:
+  name:
+    type: string
+  address:
+    type: string
+  site_url:
+    type: string
+  phone:
+    type: string
+  history:
+    type: string

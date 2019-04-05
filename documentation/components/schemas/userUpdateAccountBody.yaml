@@ -1,0 +1,7 @@
+type: object
+additionalProperties: false
+properties:
+  fullname:
+    type: string
+  phone:
+    type: string

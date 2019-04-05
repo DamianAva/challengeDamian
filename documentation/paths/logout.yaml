@@ -1,0 +1,12 @@
+post:
+  security:
+    - bearerAuth: []
+  operationId: logout
+  description: Logout an user out of the system
+  responses:
+    '200':
+      description: OK
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

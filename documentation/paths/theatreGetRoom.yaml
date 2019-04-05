@@ -1,0 +1,25 @@
+get:
+  security:
+    - bearerAuth: []
+  operationId: theatretGetRoom
+  description: Returns a theatre room info by id
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: Theatre Room ID
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/theatreRoomComplete.yaml'
+    '400':
+      description: Can't find the room
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

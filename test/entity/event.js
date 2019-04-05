@@ -17,12 +17,12 @@ let fakeExecuteQuery = function (query, cb) {
     return cb(...fakeQueries[query]());
 };
 
-let event = proxyquire('../../entity/event.js', {
-    '../config/queries': {
+let event = proxyquire('../../entity/event/controller.js', {
+    './queries': {
         getEventById: 'getEventById',
         getAllEvents: 'getAllEvents'
     },
-    '../service/mysql': {
+    '../../service/mysql': {
         executeQuery: function(query, params, cb) {
             return fakeExecuteQuery(query, cb);
         }

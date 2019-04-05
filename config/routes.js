@@ -56,6 +56,26 @@ module.exports = [
         }
     },
     {
+        path: '/notification',
+        entity: 'notification',
+        method: 'update',
+        type: 'put',
+        auth: true,
+        input: {
+            params: {},
+            body: {
+                type: {
+                    type: 'int',
+                    required: true
+                },
+                idDetail: {
+                    type: 'int',
+                    required: true
+                }
+            }
+        }
+    },
+    {
         path: '/notifications',
         entity: 'notification',
         method: 'all',

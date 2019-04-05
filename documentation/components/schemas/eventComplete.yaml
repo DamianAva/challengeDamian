@@ -1,0 +1,49 @@
+type: object
+properties:
+  id:
+    type: integer
+  author:
+    type: string
+  duration:
+    type: integer
+  director:
+    type: string
+  name:
+    type: string
+  profile_image:
+    type: string
+  premiere:
+    type: string
+    format: date-time
+  distance:
+    type: integer
+  cachet:
+    type: object
+  cover_image:
+    type: string
+  trailer:
+    type: string
+  cast:
+    type: string
+  synthesis:
+    type: string
+  city:
+    type: string
+  genre:
+    type: integer
+  public_type:
+    type: integer
+  tour:
+    type: array
+    items:
+      type: object
+  requirements:
+    type: array
+    items:
+      type: object
+  technicalRequeriments:
+    type: object
+  gallery:
+    type: array
+    items:
+      type: object

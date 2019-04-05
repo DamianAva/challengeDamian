@@ -1,7 +1,7 @@
 'use strict';
 
-const mysqlService = require('../service/mysql');
-const queries = require('../config/queries');
+const mysqlService = require('../../service/mysql');
+const queries = require('./queries');
 
 /**
  * Returns an event by ID.
@@ -19,11 +19,11 @@ exports.get = (req, res, next) => {
 
     mysqlService.executeQuery(queries.getEventById, [eventId], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!results.length) {
-            return res.status(500).send('Can\'t find the event.');
+            return res.status(400).send('Can\'t find the event.');
         }
 
         let parsedResults = {

@@ -10,7 +10,7 @@ let requiredEntities = {};
 /* Defines on Express all the routes in the routes.js file */
 for (const route of routes) {
     if (!requiredEntities[route.entity]) {
-        requiredEntities[route.entity] = require(`./entity/${route.entity}.js`);
+        requiredEntities[route.entity] = require(`./entity/${route.entity}/controller.js`);
     }
 
     router[route.type](route.path, (req, res, next) => {

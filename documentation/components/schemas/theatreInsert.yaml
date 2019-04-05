@@ -1,0 +1,23 @@
+type: object
+additionalProperties: false
+properties:
+  name:
+    type: string
+  address:
+    type: string
+  phone:
+    type: string
+  email:
+    type: string
+  site_url:
+    type: string
+  history:
+    type: string
+  country:
+    type: string
+  province:
+    type: string
+  city:
+    type: string
+  circuit_type:
+    type: integer

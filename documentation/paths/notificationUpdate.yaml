@@ -1,0 +1,17 @@
+put:
+  security:
+    - bearerAuth: []
+  operationId: notificationUpdate
+  description: Mark a notification of the user as read
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas/notificationBodyUpdate.yaml'
+  responses:
+    '200':
+      description: OK
+    '401':
+      $ref: '../components/responses/Unauthorized.yaml'
+    '500':
+      $ref: '../components/responses/InternalServerError.yaml'

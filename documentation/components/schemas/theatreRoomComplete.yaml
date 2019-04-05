@@ -1,0 +1,20 @@
+type: object
+properties:
+  id:
+    type: integer
+  name:
+    type: string
+  capacity:
+    type: integer
+  black_camera:
+    type: integer
+  relevant_data:
+    type: string
+  profile_image:
+    type: string
+  scenic_space:
+    type: string
+  escenary_type:
+    type: integer
+  theatre:
+    $ref: './theatre.yaml'
