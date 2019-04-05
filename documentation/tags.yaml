@@ -1,0 +1,12 @@
+- name: auth
+  description: Authentification methods
+- name: user
+  description: User methods
+- name: event
+  description: Event methods
+- name: theatre
+  description: Theatre methods
+- name: notification
+  description: Notification methods
+- name: payment
+  description: Payment methods

@@ -34,3 +34,5 @@ properties:
     type: array
     items:
       $ref: './theatreRoom.yaml'
+example:
+  $ref: '../examples/theatreComplete.yaml'

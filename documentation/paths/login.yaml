@@ -1,4 +1,7 @@
 post:
+  tags:
+    - user
+    - auth
   operationId: login
   description: Login an user into the system
   requestBody:
@@ -12,37 +15,7 @@ post:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              data:
-                type: object
-                properties:
-                  user:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      type:
-                        type: integer
-                      responsability:
-                        type: integer
-                  access_token:
-                    type: string
-              user:
-                type: object
-                properties:
-                  fullname:
-                    type: string
-                  email:
-                    type: string
-                  id:
-                    type: integer
-                  type:
-                    type: integer
-                  responsability:
-                    type: integer
-              access_token:
-                type: string
+            $ref: '../components/schemas/token.yaml'
     '400':
       description: User not found
     '500':

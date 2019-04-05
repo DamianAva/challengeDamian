@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - payment
   operationId: paymentGet
   description: Returns a payment of the user by ID
   parameters:

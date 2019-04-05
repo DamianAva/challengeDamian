@@ -1,0 +1,36 @@
+id: 32
+name: Teatro Colon
+address: Direccion 123
+email: colon@teatro.com
+site_url: https://colon.teatro.com.ar
+history: Una larga historia
+country: Argentina
+province: Buenos Aires
+profile_image: https://colon.teatro.com.ar/profile.jpg
+cover_image: https://colon.teatro.com.ar/cover.jpg
+city: Mar del Plata
+circuit_type: 1
+gallery:
+  - id: 1
+    src: aaa
+    alt: bbb
+  - id: 2
+    src: ccc
+    alt: ddd
+rooms:
+  - id: 1
+    name: Sala 1
+    capacity: 123
+    black_camera: 1
+    relevant_data: Datos relevantes
+    profile_image: aaa
+    scenic_space: aaa
+    escenary_type: 1
+  - id: 2
+    name: Sala 2
+    capacity: 321
+    black_camera: 0
+    relevant_data: Datos relevantes
+    profile_image: bbb
+    scenic_space: bbb
+    escenary_type: 1

@@ -1,6 +1,9 @@
 post:
   security:
     - bearerAuth: []
+  tags:
+    - user
+    - auth
   operationId: logout
   description: Logout an user out of the system
   responses:

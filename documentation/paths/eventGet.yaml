@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - event
   operationId: eventGet
   description: Returns an event by ID
   parameters:

@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - notification
   operationId: notificationAll
   description: Return all the notifications of the user
   responses:

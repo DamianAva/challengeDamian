@@ -1,6 +1,8 @@
 put:
   security:
     - bearerAuth: []
+  tags:
+    - theatre
   operationId: theatreUpdate
   description: Update the info of the logged theatre
   requestBody:

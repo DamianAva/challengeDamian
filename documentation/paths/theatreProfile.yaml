@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - theatre
   operationId: theatretProfile
   description: Return a info of the logged theatre
   responses:

@@ -1,6 +1,8 @@
 put:
   security:
     - bearerAuth: []
+  tags:
+    - user
   operationId: userUpdateAccount
   description: Updates information of the user
   requestBody:

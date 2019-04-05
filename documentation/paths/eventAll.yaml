@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - event
   operationId: eventAll
   description: Returns all the events
   responses:

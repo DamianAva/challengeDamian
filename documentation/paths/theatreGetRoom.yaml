@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - theatre
   operationId: theatretGetRoom
   description: Returns a theatre room info by id
   parameters:

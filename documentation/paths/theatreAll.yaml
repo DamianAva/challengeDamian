@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - theatre
   operationId: theatretAll
   description: Return a list with all the theatres
   responses:

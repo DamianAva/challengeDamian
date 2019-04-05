@@ -1,6 +1,8 @@
 get:
   security:
     - bearerAuth: []
+  tags:
+    - payment
   operationId: paymentAll
   description: Returns all the payments of the user
   responses:

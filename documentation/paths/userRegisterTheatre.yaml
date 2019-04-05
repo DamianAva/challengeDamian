@@ -1,6 +1,8 @@
 post:
   security:
     - bearerAuth: []
+  tags:
+    - user
   operationId: userRegisterTheatre
   description: Register a new theatre, creating a new user
   requestBody:

@@ -1,6 +1,8 @@
 put:
   security:
     - bearerAuth: []
+  tags:
+    - notification
   operationId: notificationUpdate
   description: Mark a notification of the user as read
   requestBody:
