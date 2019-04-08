@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "start": "node index.js",
+    "migrate_latest": "knex migrate:latest",
+    "migrate_rollback": "knex migrate:rollback",
+    "test": "mocha test/**/*.js --reporter spec",
+    "test_entity": "mocha test/entity/*.js --reporter spec",
+    "test_helper": "mocha test/helper/*.js --reporter spec",
+    "test_middleware": "mocha test/middleware/*.js --reporter spec",
+    "test_service": "mocha test/service/*.js --reporter spec"
   },
   "author": "Damian Echevarria",
   "license": "ISC",

@@ -97,7 +97,7 @@ exports.get = (req, res, next) => {
 exports.all = (req, res, next) => {
     mysqlService.executeQuery(queries.getAllEvents, [], (err, results) => {
         if (err) {
-            return res.status(500).send('Database Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         let parsedResults = {};

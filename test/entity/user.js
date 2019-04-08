@@ -142,7 +142,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -163,7 +163,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function (resp) {
@@ -194,7 +194,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Cache Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -263,7 +263,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Cache Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -338,7 +338,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -425,7 +425,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Cache Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -446,12 +446,12 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Wrong code.');
+                    expect(resp).to.be.equal('The code is incorrect.');
                     done();
                 }
             };
@@ -477,7 +477,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -554,7 +554,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -657,7 +657,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -677,7 +677,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function (resp) {
@@ -707,7 +707,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Cache Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -732,7 +732,7 @@ describe('entity.user', function () { /* Es preferible no utilizar arrow functio
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Error sending the email.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };

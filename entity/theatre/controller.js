@@ -235,7 +235,7 @@ exports.get = (req, res, next) => {
         }
 
         if (!results.length) {
-            return res.status(500).send('Can\'t find the theatre.');
+            return res.status(400).send('Can\'t find the theatre.');
         }
 
         let parsedResults = {

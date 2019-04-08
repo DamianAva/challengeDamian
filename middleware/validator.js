@@ -17,7 +17,7 @@ const util = require('../helper/util');
  */
 exports.validate = (route, req, res, next) => {
     if (route.auth && !req.session) {
-        return res.status(500).send('You need a valid Token to continue.');
+        return res.status(400).send('Unauthorized.');
     }
 
     if (route.input.params) {

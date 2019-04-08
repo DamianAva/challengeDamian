@@ -96,7 +96,7 @@ describe('entity.notification', function () { /* Es preferible no utilizar arrow
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -179,7 +179,7 @@ describe('entity.notification', function () { /* Es preferible no utilizar arrow
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };

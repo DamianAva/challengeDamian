@@ -149,7 +149,7 @@ describe('entity.event', function () { /* Es preferible no utilizar arrow functi
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -169,7 +169,7 @@ describe('entity.event', function () { /* Es preferible no utilizar arrow functi
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function (resp) {
@@ -299,7 +299,7 @@ describe('entity.event', function () { /* Es preferible no utilizar arrow functi
                 },
                 send: function (resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };

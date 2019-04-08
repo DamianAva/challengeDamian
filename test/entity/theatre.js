@@ -191,7 +191,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -218,7 +218,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function(resp) {
@@ -255,7 +255,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -287,7 +287,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -389,7 +389,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -506,7 +506,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -526,7 +526,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function(resp) {
@@ -648,7 +648,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -668,7 +668,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function(resp) {
@@ -784,7 +784,7 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Database Error.');
+                    expect(resp).to.be.equal('Internal Server Error.');
                     done();
                 }
             };
@@ -804,12 +804,12 @@ describe('entity.theatre', function () { /* Es preferible no utilizar arrow func
             let res = {
                 status: function(status) {
                     expect(status).to.exist;
-                    expect(status).to.be.equal(500);
+                    expect(status).to.be.equal(400);
                     return res;
                 },
                 send: function(resp) {
                     expect(resp).to.exist;
-                    expect(resp).to.be.equal('Can\'t find the Room.');
+                    expect(resp).to.be.equal('Can\'t find the room.');
                     done();
                 }
             };

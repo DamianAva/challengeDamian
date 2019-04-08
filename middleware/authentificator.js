@@ -25,7 +25,7 @@ exports.auth = (req, res, next) => {
 
     redisService.get(`TOKEN_${token}`, (err, result) => {
         if (err) {
-            return res.status(500).send('Cache Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         if (!result) {
@@ -37,7 +37,7 @@ exports.auth = (req, res, next) => {
         try {
             req.session = JSON.parse(result);
         } catch (e) {
-            return res.status(500).send('Internal Error.');
+            return res.status(500).send('Internal Server Error.');
         }
 
         req.session.token = token;
